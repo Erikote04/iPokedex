@@ -28,8 +28,10 @@ struct PokemonView: View {
             
             AsyncImage(url: pokemons[index])
             
+            Spacer()
+            
             HStack {
-                NavigationButton(title: "<") {
+                NavigationButton(title: "Previous") {
                     if index > 0 {
                         index -= 1
                     } else {
@@ -37,7 +39,7 @@ struct PokemonView: View {
                     }
                 }
                 
-                NavigationButton(title: ">") {
+                NavigationButton(title: "Next") {
                     if index < pokemons.count - 1 {
                         index += 1
                     } else {
@@ -45,6 +47,8 @@ struct PokemonView: View {
                     }
                 }
             }
+            
+            Spacer()
         }.background(pokemonColor[index])
     }
 }
@@ -55,9 +59,11 @@ struct NavigationButton: View {
     
     var body: some View {
         Button(title, action: action)
-            .padding(.horizontal, 80)
-            .padding(.vertical, 40)
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            .padding(.vertical, 20)
+            .frame(width: 120)
+            .foregroundColor(.white)
+            .background(.black)
+            .cornerRadius(8)
     }
 }
 
