@@ -4,8 +4,8 @@ struct PokemonList: View {
     let pokemons = getPokemons()
     
     var body: some View {
-        ScrollView {
-            VStack {
+        ScrollView(.horizontal) {
+            HStack {
                 ForEach(pokemons) { pokemon in
                     PokemonItem(pokemon: pokemon)
                 }
