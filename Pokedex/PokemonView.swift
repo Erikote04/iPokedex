@@ -2,10 +2,14 @@ import SwiftUI
 
 struct PokemonView: View {
     @State var index: Int = 0
+    @State var pokemons = getPokemons()
     
     var body: some View {
         VStack {
             Spacer()
+            
+            Text(pokemons[index].name)
+                .font(.largeTitle)
             
             AsyncImage(url: pokemons[index].url) { pokemonImage in
                 pokemonImage
