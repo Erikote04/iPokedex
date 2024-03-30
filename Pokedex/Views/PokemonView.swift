@@ -8,19 +8,7 @@ struct PokemonView: View {
         VStack {
             Spacer()
             
-            Text(pokemons[index].name)
-                .font(.largeTitle)
-            
-            AsyncImage(url: pokemons[index].url) { pokemonImage in
-                pokemonImage
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                VStack(spacing: 10) {
-                    ProgressView()
-                    Text("Pokeloading...")
-                }
-            }
+            PokemonDetails(pokemon: pokemons[index])
 
             HStack {
                 PokemonButton(title: "Previous") {
