@@ -13,7 +13,7 @@ struct PokedexApp: App {
                     }
                 PokemonList()
                     .tabItem {
-                        Image(systemName: "list.bullet.rectangle.fill")
+                        Image(systemName: "list.bullet.circle.fill")
                         Text("Pokedex")
                     }
             }
