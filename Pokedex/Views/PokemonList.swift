@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PokemonList: View {
-    let pokemons = getPokemons()
+    @State var pokemons: [Pokemon] = []
     
     var body: some View {
         NavigationView {
@@ -11,6 +11,11 @@ struct PokemonList: View {
                 }
             }
             .navigationTitle("Pokedex")
+        }
+        .onAppear {
+            getPokemons { pokemons in
+                self.pokemons = pokemons
+            }
         }
     }
 }

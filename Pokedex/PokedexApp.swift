@@ -6,7 +6,7 @@ struct PokedexApp: App {
         WindowGroup {
             TabView {
                 PokemonView()
-                    .badge(getPokemons().count)
+                //.badge(getPokemons().count)
                     .tabItem {
                         Image(systemName: "star.fill")
                         Text("Pokemon")
