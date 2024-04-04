@@ -33,7 +33,9 @@ func getPokemon(_ pokemonURL: String, completion: @escaping (Pokemon?) -> Void) 
            let statusCode = (response as? HTTPURLResponse)?.statusCode,
            let data = data {
             parsePokemonJSON(data) { pokemon in
-                completion(pokemon)
+                DispatchQueue.main.async {
+                    completion(pokemon)
+                }
             }
         }
     }

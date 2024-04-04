@@ -39,15 +39,45 @@ struct Pokemon: Identifiable, Decodable {
         URL(string: sprites.other.officialArtwork.frontDefault)
     }
     
-    var color: Color? {
-        if types[0].type.name == "Earth" {
-            return Color.brown
-        } else if types[0].type.name == "Fire" {
+    enum Types: String {
+        case air
+        case bug
+        case dark
+        case electric
+        case fairy
+        case fire
+        case ghost
+        case grass
+        case ground
+        case ice
+        case normal
+        case poison
+        case psychic
+        case rock
+        case water
+    }
+    
+    var color: Color {
+        let pokemonType = types[0].type.name
+        switch Types(rawValue: pokemonType) {
+        case .air, .ice, .water:
+            return Color.cyan
+        case .bug, .grass:
+            return Color.green
+        case .dark:
+            return Color.black
+        case .electric:
+            return Color.yellow
+        case .fairy, .normal, .psychic:
+            return Color.pink
+        case .fire:
             return Color.red
-        } else if types[0].type.name == "Water" {
-            return Color.blue
+        case .ghost, .poison:
+            return Color.purple
+        case .ground, .rock:
+            return Color.brown
+        default:
+            return Color.gray
         }
-        
-        return Color.gray
     }
 }

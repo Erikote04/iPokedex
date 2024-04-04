@@ -28,8 +28,8 @@ struct PokemonItem: View {
     }
 }
 
-#Preview {
-    // PokemonItem(pokemon: Pokemon(id: 1, name: "Bulbasaur"))
-    // url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
-    // color: Color.green))
-}
+// #Preview {
+// PokemonItem(pokemon: Pokemon(id: 1, name: "Bulbasaur"))
+// url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
+// color: Color.green))
+// }
