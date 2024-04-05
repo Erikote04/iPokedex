@@ -3,11 +3,14 @@ import SwiftUI
 func getPokemons(completion: @escaping ([Pokemon]) -> Void) {
     var pokemons = [Pokemon]()
     
-    for id in 1..<10 {
+    for id in 1...10 {
         getPokemon("https://pokeapi.co/api/v2/pokemon/\(id)", completion: { pokemon in
             if let pokemon = pokemon {
                 pokemons.append(pokemon)
-                completion(pokemons)
+                
+                if pokemons.count == 10 {
+                    completion(pokemons)
+                }
             }
         })
     }

@@ -2,22 +2,22 @@ import SwiftUI
 
 @main
 struct PokedexApp: App {
+    @State var pokemons: [Pokemon]!
+    @State var loaded = false
+    
     var body: some Scene {
         WindowGroup {
-            TabView {
-                PokemonView()
-                //.badge(getPokemons().count)
-                    .tabItem {
-                        Image(systemName: "star.fill")
-                        Text("Pokemon")
-                    }
-                PokemonList()
-                    .tabItem {
-                        Image(systemName: "list.bullet.circle.fill")
-                        Text("Pokedex")
+            if loaded {
+                PokemonTabView(pokemons: pokemons)
+            } else {
+                InitialLoadingView()
+                    .onAppear {
+                        getPokemons { pokemons in
+                            self.pokemons = pokemons
+                            loaded = true
+                        }
                     }
             }
-            .font(.headline)
         }
     }
 }
