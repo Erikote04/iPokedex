@@ -17,3 +17,9 @@ public struct Page {
         start - pageSize < 0 ? self : Page(start: start + pageSize, pageSize: pageSize)
     }
 }
+
+extension Page: Equatable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.start == rhs.start && lhs.pageSize == rhs.pageSize
+    }
+}

@@ -6,6 +6,8 @@
 	<dict>
 		<key>Pokedex.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -13,6 +15,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>B141D6E62BAB62870030B79F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B19B4F1C2BC0B6B5005B989C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1BA672E2BC1B272004CDCEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
