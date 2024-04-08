@@ -26,20 +26,21 @@ func getPokemons(completion: @escaping ([Pokemon]) -> Void) {
 ///     completion([ pokemon! ])
 /// })
 /// ```
-func getPokemon(_ pokemonURL: String, completion: @escaping (Pokemon?) -> Void) {
+func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared, completion: @escaping (Pokemon?) -> Void) {
     guard let URL = URL(string: pokemonURL) else { return }
     
     let request = URLRequest(url: URL)
-    let session = URLSession.shared
     let task = session.dataTask(with: request) { data, response, error in
         if error == nil,
            let statusCode = (response as? HTTPURLResponse)?.statusCode,
            let data = data {
             parsePokemonJSON(data) { pokemon in
-                DispatchQueue.main.async {
-                    completion(pokemon)
-                }
+                // DispatchQueue.main.async {
+                completion(pokemon)
+                // }
             }
+        } else {
+            completion(nil)
         }
     }
     

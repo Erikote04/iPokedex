@@ -24,7 +24,7 @@ final class ParseTest: XCTestCase {
         parsePokemonJSON(data) { pokemon in
             // Then
             XCTAssertNotNil(pokemon)
-            XCTAssertEqual(pokemon?.name, "squirtle")
+            XCTAssertEqual(pokemon?.name, "bulbasaur")
         }
     }
 }
