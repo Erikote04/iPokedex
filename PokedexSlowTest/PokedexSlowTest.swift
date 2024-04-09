@@ -6,7 +6,7 @@ import Pokedex
 final class PokedexSlowTest: XCTestCase {
 
     func test_Given_ValidPokemonURL_When_CallingGetPokemonAndSucceeds_Then_WeGetValidPokemon() {
-        var end = false
+        let expec = expectation(description: "Waiting for getPokemon")
         
         // Given
         let url = "https://pokeapi.co/api/v2/pokemon/1"
@@ -17,9 +17,10 @@ final class PokedexSlowTest: XCTestCase {
             XCTAssertNotNil(pokemon)
             XCTAssertEqual(pokemon?.id, 1)
             XCTAssertEqual(pokemon?.name, "bulbasaur")
-            end = true
+            
+            expec.fulfill()
         }
         
-        while (!end) {}
+        wait(for: [expec], timeout: 5.0)
     }
 }

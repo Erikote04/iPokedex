@@ -2,6 +2,11 @@ import SwiftUI
 
 @main
 struct PokedexApp: App {
+    
+    // #if TESTING
+    let isRunningTest = NSClassFromString("XCTTestCase") != nil
+    // #endif
+    
     @State var pokemons: [Pokemon]!
     @State var loaded = false
     
@@ -10,13 +15,17 @@ struct PokedexApp: App {
             if loaded {
                 PokemonTabView(pokemons: pokemons)
             } else {
-                InitialLoadingView()
-                    .onAppear {
-                        getPokemons { pokemons in
-                            self.pokemons = pokemons
-                            loaded = true
+                if isRunningTest {
+                    Text("Testing")
+                } else {
+                    InitialLoadingView()
+                        .onAppear {
+                            getPokemons { pokemons in
+                                self.pokemons = pokemons
+                                loaded = true
+                            }
                         }
-                    }
+                }
             }
         }
     }

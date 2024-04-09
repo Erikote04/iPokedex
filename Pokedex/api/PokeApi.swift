@@ -35,9 +35,9 @@ func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared, c
            let statusCode = (response as? HTTPURLResponse)?.statusCode,
            let data = data {
             parsePokemonJSON(data) { pokemon in
-                // DispatchQueue.main.async {
-                completion(pokemon)
-                // }
+                DispatchQueue.main.async {
+                    completion(pokemon)
+                }
             }
         } else {
             completion(nil)
