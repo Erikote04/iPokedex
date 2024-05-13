@@ -4,32 +4,42 @@ struct PokemonItem: View {
     let pokemon: Pokemon
     
     var body: some View {
-        ZStack {
+        HStack {
             AsyncImage(url: pokemon.url) { pokemonImage in
                 pokemonImage
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
+                    .background(pokemon.color)
+                    .frame(width: 50, height: 50)
+                    .clipShape(.circle)
             } placeholder: {
-                VStack(spacing: 10) {
-                    ProgressView()
-                    Text("Pokeloading...")
-                }
+                Image(systemName: "person")
             }
             
-            Text(pokemon.name)
+            Text(pokemon.name.capitalized)
                 .padding()
-                .font(.largeTitle)
-                .background(Color("BackgroundNameColor"))
-                .foregroundColor(pokemon.color)
-                .cornerRadius(8)
-                .position(x: 100, y: 50)
         }
-        .background(pokemon.color)
     }
 }
 
-// #Preview {
-// PokemonItem(pokemon: Pokemon(id: 1, name: "Bulbasaur"))
-// url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
-// color: Color.green))
-// }
+#Preview {
+    PokemonItem(pokemon: Pokemon(id: 35,
+                                   name: "clefairy",
+                                   weight: 75,
+                                   sprites: Pokemon.Sprite(
+                                    other: Pokemon.Sprite.Other(
+                                        officialArtwork: Pokemon.Sprite.Other.Artwork(
+                                            frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
+                                        )
+                                    )
+                                   ),
+                                   types: [
+                                    Pokemon.PokemonType(
+                                        type: Pokemon.PokemonType.InnerPokemonType(
+                                            name: "fairy",
+                                            url: "https://pokeapi.co/api/v2/type/18/"
+                                        )
+                                    )
+                                   ]
+                                  ))
+}

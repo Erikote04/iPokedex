@@ -14,12 +14,12 @@ struct PokemonTabView: View {
             //.badge(getPokemons().count)
                 .tabItem {
                     Image(systemName: "star.fill")
-                    Text("Pokemon")
+                    Text("Pokedex")
                 }
             PokemonList(pokemons: pokemons)
                 .tabItem {
-                    Image(systemName: "list.bullet.circle.fill")
-                    Text("Pokedex")
+                    Image(systemName: "book.fill")
+                    Text("Pokepedia")
                 }
         }
         .font(.headline)
