@@ -5,11 +5,6 @@ struct PokemonTabView: View {
 
     var body: some View {
         TabView {
-            PokemonMapView(pokemons: pokemons)
-                .tabItem {
-                    Image(systemName: "map.fill")
-                    Text("Map")
-                }
             PokemonView()
             //.badge(getPokemons().count)
                 .tabItem {
@@ -20,6 +15,11 @@ struct PokemonTabView: View {
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Pokepedia")
+                }
+            PokemonMapView(pokemons: pokemons)
+                .tabItem {
+                    Image(systemName: "map.fill")
+                    Text("Map")
                 }
         }
         .font(.headline)

@@ -2,9 +2,20 @@ import SwiftUI
 
 struct PokemonList: View {
     let pokemons: [Pokemon]!
+    @State private var searchText = ""
     
     init(pokemons: [Pokemon]) {
-        self.pokemons = pokemons
+        self.pokemons = pokemons.sorted { $0.id < $1.id }
+    }
+    
+    var searchResults: [Pokemon] {
+        if searchText.isEmpty {
+            pokemons
+        } else {
+            pokemons.filter { pokemon in
+                pokemon.name.contains(searchText)
+            }
+        }
     }
     
     var body: some View {
@@ -14,8 +25,9 @@ struct PokemonList: View {
                     PokemonItem(pokemon: pokemon)
                 }
             }
-            .navigationTitle("Pokedex")
+            .navigationTitle("Pokepedia")
         }
+        .searchable(text: $searchText)
     }
 }
 
