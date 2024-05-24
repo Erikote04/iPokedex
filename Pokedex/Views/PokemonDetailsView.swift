@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PokemonDetails: View {
+struct PokemonDetailsView: View {
     let pokemon: Pokemon
     
     var body: some View {
@@ -29,7 +29,7 @@ struct PokemonDetails: View {
 }
 
 #Preview {
-    PokemonDetails(pokemon:
+    PokemonDetailsView(pokemon:
                     Pokemon(
                         id: 35,
                         name: "clefairy",

@@ -8,7 +8,7 @@ struct PokedexView: View {
         VStack {
             TabView {
                 ForEach(pokemons) { pokemon in
-                    PokemonDetails(pokemon: pokemon)
+                    PokemonDetailsView(pokemon: pokemon)
                 }
             }
             .tabViewStyle(PageTabViewStyle())

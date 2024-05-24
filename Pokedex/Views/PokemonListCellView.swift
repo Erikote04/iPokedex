@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PokemonListCell: View {
+struct PokemonListCellView: View {
     let pokemon: Pokemon
     
     var body: some View {
@@ -13,7 +13,10 @@ struct PokemonListCell: View {
                     .frame(width: 50, height: 50)
                     .clipShape(.circle)
             } placeholder: {
-                Image(systemName: "person")
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundStyle(pokemon.color)
             }
             
             Text(pokemon.name.capitalized).bold()
@@ -23,7 +26,7 @@ struct PokemonListCell: View {
 }
 
 #Preview {
-    PokemonListCell(pokemon:
+    PokemonListCellView(pokemon:
                         Pokemon(
                             id: 35,
                             name: "clefairy",

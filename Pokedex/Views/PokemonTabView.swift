@@ -11,7 +11,7 @@ struct PokemonTabView: View {
                     Image(systemName: "star.fill")
                     Text("Pokedex")
                 }
-            PokemonList(pokemons: pokemons)
+            PokemonListView(pokemons: pokemons)
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Pokepedia")
