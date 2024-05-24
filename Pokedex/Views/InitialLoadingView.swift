@@ -2,7 +2,12 @@ import SwiftUI
 
 struct InitialLoadingView: View {
     var body: some View {
-        Text("Loading...")
+        VStack {
+            ProgressView()
+                .padding()
+            
+            Text("Loading...")
+        }
     }
 }
 

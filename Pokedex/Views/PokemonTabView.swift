@@ -5,7 +5,7 @@ struct PokemonTabView: View {
 
     var body: some View {
         TabView {
-            PokemonView()
+            PokedexView()
             //.badge(getPokemons().count)
                 .tabItem {
                     Image(systemName: "star.fill")

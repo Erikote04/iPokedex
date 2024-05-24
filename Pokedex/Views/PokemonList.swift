@@ -22,7 +22,7 @@ struct PokemonList: View {
         NavigationView {
             List(pokemons) { pokemon in
                 NavigationLink(destination: PokemonDetails(pokemon: pokemon)) {
-                    PokemonItem(pokemon: pokemon)
+                    PokemonListCell(pokemon: pokemon)
                 }
             }
             .navigationTitle("Pokepedia")
