@@ -1,25 +1,32 @@
 import SwiftUI
 
-struct PokemonListView: View {
+struct PokemonGridView: View {
     let pokemons: [Pokemon]!
     
-    init(pokemons: [Pokemon]) {
-        self.pokemons = pokemons.sorted { $0.id < $1.id }
-    }
+    let columns = [
+        GridItem(.adaptive(minimum: 150)),
+    ]
     
     var body: some View {
         NavigationStack {
-            List(pokemons) { pokemon in
-                NavigationLink(destination: PokemonDetailsView(pokemon: pokemon)) {
-                    PokemonListCellView(pokemon: pokemon)
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(pokemons) { pokemon in
+                        NavigationLink {
+                            PokemonDetailsView(pokemon: pokemon)
+                        } label: {
+                            PokemonGridItemView(pokemon: pokemon)
+                        }
+                    }
                 }
+                .padding([.horizontal, .bottom])
             }
         }
     }
 }
 
 #Preview {
-    PokemonListView(
+    PokemonGridView(
         pokemons:
             [Pokemon(
                 id: 35,

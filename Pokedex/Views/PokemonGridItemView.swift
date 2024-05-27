@@ -1,35 +1,50 @@
 import SwiftUI
 
-struct PokemonDetailsView: View {
+struct PokemonGridItemView: View {
     let pokemon: Pokemon
     
     var body: some View {
         VStack {
-            Spacer()
-            
-            Text(pokemon.name.capitalized)
-                .font(.largeTitle)
-            
             AsyncImage(url: pokemon.url) { pokemonImage in
                 pokemonImage
                     .resizable()
                     .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .padding()
             } placeholder: {
                 VStack(spacing: 10) {
-                    ProgressView()
-                    Text("Pokeloading...")
+                    Image(systemName: "questionmark.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(pokemon.color)
+                        .frame(width: 100, height: 100)
+                        .padding()
                 }
             }
             
-            Spacer()
+            VStack {
+                Text(pokemon.name.capitalized)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                
+                //                Text(pokemon.type)
+                //                    .font(.caption)
+                //                    .foregroundStyle(.gray)
+            }
+            .padding(.vertical)
+            .frame(maxWidth: .infinity)
+            .background(pokemon.color)
         }
-        .padding()
-        .background(pokemon.color)
+        .clipShape(.rect(cornerRadius: 10))
+        .overlay (
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.black)
+        )
     }
 }
 
 #Preview {
-    PokemonDetailsView(
+    PokemonGridItemView(
         pokemon:
             Pokemon(
                 id: 35,

@@ -13,7 +13,7 @@ struct PokemonListCellView: View {
                     .frame(width: 50, height: 50)
                     .clipShape(.circle)
             } placeholder: {
-                Image(systemName: "person.circle.fill")
+                Image(systemName: "questionmark.circle.fill")
                     .resizable()
                     .frame(width: 50, height: 50)
                     .foregroundStyle(pokemon.color)
@@ -26,26 +26,27 @@ struct PokemonListCellView: View {
 }
 
 #Preview {
-    PokemonListCellView(pokemon:
-                        Pokemon(
-                            id: 35,
-                            name: "clefairy",
-                            weight: 75,
-                            sprites: Pokemon.Sprite(
-                                other: Pokemon.Sprite.Other(
-                                    officialArtwork: Pokemon.Sprite.Other.Artwork(
-                                        frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
-                                    )
-                                )
-                            ),
-                            types: [
-                                Pokemon.PokemonType(
-                                    type: Pokemon.PokemonType.InnerPokemonType(
-                                        name: "fairy",
-                                        url: "https://pokeapi.co/api/v2/type/18/"
-                                    )
-                                )
-                            ]
+    PokemonListCellView(
+        pokemon:
+            Pokemon(
+                id: 35,
+                name: "clefairy",
+                weight: 75,
+                sprites: Pokemon.Sprite(
+                    other: Pokemon.Sprite.Other(
+                        officialArtwork: Pokemon.Sprite.Other.Artwork(
+                            frontDefault: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
                         )
+                    )
+                ),
+                types: [
+                    Pokemon.PokemonType(
+                        type: Pokemon.PokemonType.InnerPokemonType(
+                            name: "fairy",
+                            url: "https://pokeapi.co/api/v2/type/18/"
+                        )
+                    )
+                ]
+            )
     )
 }

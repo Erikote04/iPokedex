@@ -1,27 +1,41 @@
 import SwiftUI
 
-struct PokemonListView: View {
+struct PokepediaView: View {
     let pokemons: [Pokemon]!
-    
-    init(pokemons: [Pokemon]) {
-        self.pokemons = pokemons.sorted { $0.id < $1.id }
-    }
+    @State private var isShowingGrid = true
     
     var body: some View {
         NavigationStack {
-            List(pokemons) { pokemon in
-                NavigationLink(destination: PokemonDetailsView(pokemon: pokemon)) {
-                    PokemonListCellView(pokemon: pokemon)
+            Group {
+                if isShowingGrid {
+                    PokemonGridView(pokemons: pokemons)
+                } else {
+                    PokemonListView(pokemons: pokemons)
                 }
             }
+            .navigationTitle("Pokepedia")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowingGrid.toggle()
+                    }) {
+                        Label("Change Layout", systemImage: isShowingGrid ? "list.bullet" : "square.grid.2x2")
+                    }
+                }
+            }
+            
+            Button("Load more...") {
+                // use pagination to load more pokemons
+            }
+            .padding()
         }
     }
 }
 
 #Preview {
-    PokemonListView(
-        pokemons:
-            [Pokemon(
+    PokepediaView(
+        pokemons: [
+            Pokemon(
                 id: 35,
                 name: "clefairy",
                 weight: 75,
@@ -40,6 +54,7 @@ struct PokemonListView: View {
                         )
                     )
                 ]
-            )]
+            )
+        ]
     )
 }
