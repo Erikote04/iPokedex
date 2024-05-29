@@ -4,6 +4,10 @@ struct PokepediaView: View {
     let pokemons: [Pokemon]!
     @State private var isShowingGrid = true
     
+    init(pokemons: [Pokemon]) {
+        self.pokemons = pokemons.sorted { $0.id < $1.id }
+    }
+    
     var body: some View {
         NavigationStack {
             Group {

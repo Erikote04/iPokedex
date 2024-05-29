@@ -3,10 +3,6 @@ import SwiftUI
 struct PokemonListView: View {
     let pokemons: [Pokemon]!
     
-    init(pokemons: [Pokemon]) {
-        self.pokemons = pokemons.sorted { $0.id < $1.id }
-    }
-    
     var body: some View {
         NavigationStack {
             List(pokemons) { pokemon in
