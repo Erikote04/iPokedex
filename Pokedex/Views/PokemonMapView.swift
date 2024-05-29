@@ -17,21 +17,26 @@ extension Pokemon {
                 .resizable()
                 .scaledToFit()
         } placeholder: {
-            VStack(spacing: 10) {
-                ProgressView()
-                Text("Pokeloading...")
+            VStack {
+                Image(systemName: "questionmark.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(self.color)
+                    .padding()
             }
         }
     }
 }
 
 struct PokemonMapView: View {
-    @State var blur = 0.0
     @State var pokemons: [Pokemon]!
     @State var selectedPokemon: Pokemon? = nil
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708),
-                                                   latitudinalMeters: 5000.0,
-                                                   longitudinalMeters: 5000.0)
+    @State private var isShowingModal = false
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708),
+        latitudinalMeters: 5000.0,
+        longitudinalMeters: 5000.0
+    )
     
     var body: some View {
         ZStack {
@@ -42,30 +47,12 @@ struct PokemonMapView: View {
                         .frame(width: 40.0, height: 40.0)
                         .onTapGesture {
                             selectedPokemon = item
-                            blur = 5
                         }
                 }
             }
-            .blur(radius: blur)
-            .animation(.linear, value: blur)
-            
-            if let pokemon = selectedPokemon {
-                VStack {
-                    pokemon
-                        .asyncImage()
-                        .frame(width: 90, height: 90)
-                    
-                    Text(pokemon.name)
-                }
-                .padding()
-                .background(pokemon.color)
-                .cornerRadius(15)
-                .onTapGesture {
-                    selectedPokemon = nil
-                    blur = 0
-                }
-                
-            }
+        }
+        .sheet(item: $selectedPokemon) { pokemon in
+            PokemonModalView(pokemon: pokemon)
         }
     }
 }

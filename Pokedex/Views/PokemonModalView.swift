@@ -1,36 +1,47 @@
 import SwiftUI
 
-struct PokemonGridItemView: View {
+struct PokemonModalView: View {
+    @Environment(\.dismiss) var dismiss
     let pokemon: Pokemon
     
     var body: some View {
-        VStack {
-            pokemon.asyncImage()
-                .frame(width: 100, height: 100)
-            
+        NavigationStack {
             VStack {
-                Text(pokemon.name.capitalized)
-                    .font(.headline)
-                    .foregroundStyle(.white)
+                Spacer()
                 
-                //                Text(pokemon.type)
-                //                    .font(.caption)
-                //                    .foregroundStyle(.gray)
+                Text(pokemon.name.capitalized)
+                    .font(.largeTitle)
+                    .bold()
+                
+                pokemon.asyncImage()
+                
+                Spacer()
+                
+                Button("Capture") {
+                    // add to captured pokemons
+                    dismiss()
+                }
+                .frame(width: 200)
+                .padding()
+                .background(pokemon.color)
+                .foregroundStyle(.white)
+                .cornerRadius(8)
+                
+                Spacer()
             }
-            .padding(.vertical)
-            .frame(maxWidth: .infinity)
-            .background(pokemon.color)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Escape") {
+                        dismiss()
+                    }
+                }
+            }
         }
-        .clipShape(.rect(cornerRadius: 10))
-        .overlay (
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.black)
-        )
     }
 }
 
 #Preview {
-    PokemonGridItemView(
+    PokemonModalView(
         pokemon:
             Pokemon(
                 id: 35,

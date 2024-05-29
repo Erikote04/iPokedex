@@ -10,16 +10,7 @@ struct PokemonDetailsView: View {
             Text(pokemon.name.capitalized)
                 .font(.largeTitle)
             
-            AsyncImage(url: pokemon.url) { pokemonImage in
-                pokemonImage
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                VStack(spacing: 10) {
-                    ProgressView()
-                    Text("Pokeloading...")
-                }
-            }
+            pokemon.asyncImage()
             
             Spacer()
         }
