@@ -43,8 +43,10 @@ struct Pokemon: Identifiable, Decodable {
         case air
         case bug
         case dark
+        case dragon
         case electric
         case fairy
+        case fighting
         case fire
         case ghost
         case grass
@@ -70,11 +72,11 @@ struct Pokemon: Identifiable, Decodable {
             return Color.yellow
         case .fairy, .normal, .psychic:
             return Color.pink
-        case .fire:
+        case .dragon, .fire:
             return Color.red
         case .ghost, .poison:
             return Color.purple
-        case .ground, .rock:
+        case .fighting, .ground, .rock:
             return Color.brown
         default:
             return Color.gray
