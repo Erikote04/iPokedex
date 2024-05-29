@@ -28,10 +28,10 @@ struct PokepediaView: View {
                 }
             }
             
-            Button("Load more...") {
-                // use pagination to load more pokemons
-            }
-            .padding()
+            //            Button("Load more...") {
+            //                use pagination to load more pokemons
+            //            }
+            //            .padding()
         }
     }
 }

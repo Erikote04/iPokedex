@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PokedexView: View {
-    @State var index: Int = 0
+    //    @State var index: Int = 0
     @State var pokemons: [Pokemon] = []
     
     var body: some View {
@@ -15,7 +15,7 @@ struct PokedexView: View {
             .ignoresSafeArea()
             .onAppear {
                 getPokemons { pokemons in
-                    self.pokemons = pokemons
+                    self.pokemons = pokemons.sorted { $0.id < $1.id }
                 }
             }
             
