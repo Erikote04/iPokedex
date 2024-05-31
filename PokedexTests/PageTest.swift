@@ -5,7 +5,7 @@ final class PageTest: XCTestCase {
     
     func test_Given_JustCreatedPage_Then_ItNotNil() {
         // Given
-        let page = Page()
+        let page = APIPage()
         
         // Then
         XCTAssertNotNil(page)
@@ -13,7 +13,7 @@ final class PageTest: XCTestCase {
     
     func test_Given_JustCreatedPage_Then_ItStartsIn1() {
         // Given
-        let page = Page()
+        let page = APIPage()
         
         // Then
         XCTAssertEqual(1, page.start)
@@ -21,7 +21,7 @@ final class PageTest: XCTestCase {
     
     func test_Given_Page_When_MovingForward_Then_PageSizeValueChanges() {
         // Given
-        let page = Page()
+        let page = APIPage()
         
         // When
         let nextPage = page.next()
@@ -32,19 +32,19 @@ final class PageTest: XCTestCase {
     
     func test_Given_Page_When_MovingForwardOnce_Then_StartIsStartPlusPageSize() {
         // Given
-        let page = Page()
+        let page = APIPage()
         
         // When
         let nextPage = page.next()
         
         // Then
-        let secondPage = Page().next()
+        let secondPage = APIPage().next()
         XCTAssertEqual(nextPage, secondPage)
     }
     
     func test_Given_Page_When_MovingBackwards_Then_StartIsAlwaysGreaterThanZero() {
         // Given
-        let page = Page()
+        let page = APIPage()
         
         // When
         let previousPage = page.previous()
