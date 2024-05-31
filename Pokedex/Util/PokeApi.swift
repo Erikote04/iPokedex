@@ -1,54 +1,41 @@
 import SwiftUI
 
-func getPokemons(completion: @escaping ([Pokemon]) -> Void) {
-    var pokemons = [Pokemon]()
+class PokeApi {
+    let baseURL = "https://pokeapi.co/api/v2/pokemon/"
+    let currentPage = APIPage()
+    var pokemons: [Pokemon] = []
     
-    for id in 1...10 {
-        getPokemon("https://pokeapi.co/api/v2/pokemon/\(id)", completion: { pokemon in
-            if let pokemon = pokemon {
-                pokemons.append(pokemon)
-                
-                if pokemons.count == 10 {
-                    completion(pokemons)
-                }
+    func getPokemons() async -> [Pokemon] {
+        for id in currentPage.start...currentPage.stop {
+            if let pokemon = await getPokemon("\(baseURL)\(id)") {
+                self.pokemons.append(pokemon)
             }
-        })
+        }
+        
+        return self.pokemons
     }
 }
 
 /// Returns a Pokemon from PokeAPI
 /// - Parameters:
 ///    - pokemonURL: to pokemon
-///    - completion: this returns a Pokemon (if found and all is OK) in the Main Thread
 /// Example
 /// ```
 /// getPokemon("https://pokeapi.co/api/v2/pokemon/80", completion: { pokemon in
 ///     completion([ pokemon! ])
 /// })
 /// ```
-func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared, completion: @escaping (Pokemon?) -> Void) {
-    guard let URL = URL(string: pokemonURL) else { return }
+func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared) async -> Pokemon? {
+    guard let URL = URL(string: pokemonURL) else { return nil }
     
-    let request = URLRequest(url: URL)
-    let task = session.dataTask(with: request) { data, response, error in
-        if error == nil,
-           let statusCode = (response as? HTTPURLResponse)?.statusCode,
-           let data = data {
-            parsePokemonJSON(data) { pokemon in
-                DispatchQueue.main.async {
-                    completion(pokemon)
-                }
-            }
-        } else {
-            completion(nil)
-        }
-    }
+    let (data, response) = try! await session.data(from: URL)
+    let pokemon = await parsePokemonJSON(data)
     
-    task.resume()
+    return pokemon
 }
 
-func parsePokemonJSON(_ data: Data, completion: (Pokemon?) -> Void) {
+func parsePokemonJSON(_ data: Data) async -> Pokemon? {
     let pokemon = try? JSONDecoder().decode(Pokemon.self, from: data)
-    completion(pokemon)
+    return pokemon
 }
 

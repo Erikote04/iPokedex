@@ -13,10 +13,9 @@ struct PokedexView: View {
             }
             .tabViewStyle(PageTabViewStyle())
             .ignoresSafeArea()
-            .onAppear {
-                getPokemons { pokemons in
-                    self.pokemons = pokemons.sorted { $0.id < $1.id }
-                }
+            .task {
+                let pokemons = await PokeApi().getPokemons()
+                self.pokemons = pokemons.sorted { $0.id < $1.id }
             }
             
             Spacer()

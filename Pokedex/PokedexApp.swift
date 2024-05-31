@@ -7,23 +7,22 @@ struct PokedexApp: App {
     let isRunningTest = NSClassFromString("XCTTestCase") != nil
     // #endif
     
-    @State var pokemons: [Pokemon]!
+    @State var pokemons: [Pokemon]?
     @State var loaded = false
+    let pokeAPI = PokeApi()
     
     var body: some Scene {
         WindowGroup {
             if loaded {
-                PokemonTabView(pokemons: pokemons)
+                PokemonTabView(pokemons: pokemons ?? [])
             } else {
                 if isRunningTest {
                     Text("Testing")
                 } else {
                     InitialLoadingView()
-                        .onAppear {
-                            getPokemons { pokemons in
-                                self.pokemons = pokemons
-                                loaded = true
-                            }
+                        .task {
+                            let pokemons = await pokeAPI.getPokemons()
+                            loaded = true
                         }
                 }
             }
