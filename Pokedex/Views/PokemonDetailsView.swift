@@ -20,7 +20,7 @@ struct PokemonDetailsView: View {
 }
 
 #Preview {
-    PokemonDetailsView(
+    let pokemonDetailView = PokemonDetailsView(
         pokemon:
             Pokemon(
                 id: 35,
@@ -43,4 +43,12 @@ struct PokemonDetailsView: View {
                 ]
             )
     )
+    
+    return TabView {
+        pokemonDetailView
+        .tabItem {
+            Image(systemName: "star.fill")
+            Text("Pokedex")
+        }
+    }
 }
