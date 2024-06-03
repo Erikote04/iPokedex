@@ -1,24 +1,31 @@
 import SwiftUI
 
+class CapturedPokemonManager: ObservableObject {
+    @Published var capturedPokemons: [Pokemon] = []
+    
+    func capturePokemon(_ pokemon: Pokemon) {
+        capturedPokemons.append(pokemon)
+    }
+}
+
 struct PokedexView: View {
-    //    @State var index: Int = 0
-    @State var pokemons: [Pokemon] = []
+    @EnvironmentObject var capturedPokemonManager: CapturedPokemonManager
     
     var body: some View {
         VStack {
-            TabView {
-                ForEach(pokemons) { pokemon in
-                    PokemonDetailsView(pokemon: pokemon)
+            if capturedPokemonManager.capturedPokemons.isEmpty {
+                Text("You don't have any pokemons yet")
+            } else {
+                TabView {
+                    ForEach(capturedPokemonManager.capturedPokemons) { pokemon in
+                        PokemonDetailsView(pokemon: pokemon)
+                    }
                 }
+                .tabViewStyle(PageTabViewStyle())
+                .ignoresSafeArea()
+                
+                Spacer()
             }
-            .tabViewStyle(PageTabViewStyle())
-            .ignoresSafeArea()
-            .task {
-                let pokemons = await PokeApi().getPokemons()
-                self.pokemons = pokemons.sorted { $0.id < $1.id }
-            }
-            
-            Spacer()
         }
     }
 }

@@ -10,11 +10,13 @@ struct PokedexApp: App {
     @State var pokemons: [Pokemon]?
     @State var loaded = false
     let pokeAPI = PokeApi()
+    let capturedPokemonManager = CapturedPokemonManager()
     
     var body: some Scene {
         WindowGroup {
             if loaded {
                 PokemonTabView(pokemons: pokemons ?? [])
+                    .environmentObject(capturedPokemonManager)
             } else {
                 if isRunningTest {
                     Text("Testing")
@@ -24,6 +26,7 @@ struct PokedexApp: App {
                             let pokemons = await pokeAPI.getPokemons()
                             loaded = true
                         }
+                        .environmentObject(capturedPokemonManager)
                 }
             }
         }

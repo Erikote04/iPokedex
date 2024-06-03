@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PokemonModalView: View {
+    @EnvironmentObject var capturedPokemonManager: CapturedPokemonManager
     @Environment(\.dismiss) var dismiss
     let pokemon: Pokemon
     
@@ -18,7 +19,7 @@ struct PokemonModalView: View {
                 Spacer()
                 
                 Button("Capture") {
-                    // add to captured pokemons
+                    capturedPokemonManager.capturePokemon(pokemon)
                     dismiss()
                 }
                 .frame(width: 200)

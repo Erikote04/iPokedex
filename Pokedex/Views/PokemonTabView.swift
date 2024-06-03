@@ -2,11 +2,12 @@ import SwiftUI
 
 struct PokemonTabView: View {
     @State var pokemons: [Pokemon]
+    @EnvironmentObject var capturedPokemonManager: CapturedPokemonManager
 
     var body: some View {
         TabView {
             PokedexView()
-            //.badge(getPokemons().count)
+                .badge(capturedPokemonManager.capturedPokemons.count)
                 .tabItem {
                     Image(systemName: "star.fill")
                     Text("Pokedex")
@@ -23,6 +24,10 @@ struct PokemonTabView: View {
                 }
         }
         .font(.headline)
+        .task {
+            let pokemons = await PokeApi().getPokemons()
+            self.pokemons = pokemons.sorted { $0.id < $1.id }
+        }
     }
 }
 
