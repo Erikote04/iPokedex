@@ -1,9 +1,10 @@
 import SwiftUI
 
-struct Pokemon: Identifiable, Decodable {
-    struct Sprite: Decodable {
-        struct Other: Decodable {
-            struct Artwork: Decodable {
+struct Pokemon: Identifiable, Decodable, Hashable {
+    
+    struct Sprite: Decodable, Hashable {
+        struct Other: Decodable, Hashable {
+            struct Artwork: Decodable, Hashable {
                 let frontDefault: String
                 
                 enum CodingKeys: String, CodingKey {
@@ -20,8 +21,8 @@ struct Pokemon: Identifiable, Decodable {
         let other: Other
     }
     
-    struct PokemonType: Decodable {
-        struct InnerPokemonType: Decodable {
+    struct PokemonType: Decodable, Hashable {
+        struct InnerPokemonType: Decodable, Hashable {
             let name: String
             let url: String
         }
