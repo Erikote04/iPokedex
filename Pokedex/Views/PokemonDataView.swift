@@ -1,28 +1,39 @@
 import SwiftUI
 
-struct PokemonDetailsView: View {
+extension Pokemon.PokemonType: Identifiable {
+    var id: String {
+        self.type.name
+    }
+}
+
+struct PokemonDataView: View {
     let pokemon: Pokemon
     
     var body: some View {
         VStack {
-            Spacer()
+            HStack {
+                Text("Type:")
+                Spacer()
+                ForEach(pokemon.types) { type in
+                    Text(type.type.name.capitalized).bold()
+                }
+            }.padding(.horizontal)
             
-            Text(pokemon.name.capitalized)
-                .font(.largeTitle)
+            CustomDivider(height: 1)
             
-            pokemon.asyncImage()
+            HStack {
+                Text("Weight:")
+                Spacer()
+                Text("\(pokemon.weight)kg").bold()
+            }.padding(.horizontal)
             
-            PokemonDataView(pokemon: pokemon)
-            
-            Spacer()
-        }
-        .padding()
-        .background(pokemon.color)
+            CustomDivider(height: 1)
+        }.padding()
     }
 }
 
 #Preview {
-    let pokemonDetailView = PokemonDetailsView(
+    PokemonDataView(
         pokemon:
             Pokemon(
                 id: 35,
@@ -45,12 +56,4 @@ struct PokemonDetailsView: View {
                 ]
             )
     )
-    
-    return TabView {
-        pokemonDetailView
-            .tabItem {
-                Image(systemName: "star.fill")
-                Text("Pokedex")
-            }
-    }
 }

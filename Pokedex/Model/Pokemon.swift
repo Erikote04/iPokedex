@@ -40,9 +40,9 @@ struct Pokemon: Identifiable, Decodable, Hashable {
     }
     
     enum Types: String {
-        case air = "Air"
-        case bug = "Bug"
-        case dark = "Dark"
+        case air
+        case bug
+        case dark
         case dragon
         case electric
         case fairy

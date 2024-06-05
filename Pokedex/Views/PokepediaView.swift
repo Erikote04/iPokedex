@@ -27,11 +27,6 @@ struct PokepediaView: View {
                     }
                 }
             }
-            
-            //            Button("Load more...") {
-            //                use pagination to load more pokemons
-            //            }
-            //            .padding()
         }
     }
 }
