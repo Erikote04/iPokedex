@@ -73,5 +73,5 @@ struct PokemonListView: View {
                     )
                 ]
             )]
-    )
+    ).environmentObject(CapturedPokemonManager())
 }

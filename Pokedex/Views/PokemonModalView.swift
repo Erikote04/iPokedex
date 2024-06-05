@@ -75,5 +75,5 @@ struct PokemonModalView: View {
                     )
                 ]
             )
-    )
+    ).environmentObject(CapturedPokemonManager())
 }
