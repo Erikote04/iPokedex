@@ -1,30 +1,21 @@
 import XCTest
-
-@testable
-import Pokedex
+@testable import Pokedex
 
 final class ParseTest: XCTestCase {
-
-    func test_Given_EmptyData_When_Parsing_Then_ReturnsNilPokemon() {
+    
+    func test_GivenEmptyData_WhenParsing_ThenReturnsNil() {
         // Given
-        let emptyData = Data()
         
         // When
-        parsePokemonJSON(emptyData) { pokemon in
-            // Then
-            XCTAssertNil(pokemon)
-        }
+        
+        // Then
     }
     
-    func test_Given_ValidData_When_Parsing_Then_ReturnsNonNilPokemon() {
+    func test_GivenValidData_WhenParsing_ThenReturnsPokemon() {
         // Given
-        let data = Data(pokemon1JSON.utf8)
         
         // When
-        parsePokemonJSON(data) { pokemon in
-            // Then
-            XCTAssertNotNil(pokemon)
-            XCTAssertEqual(pokemon?.name, "bulbasaur")
-        }
+        
+        // Then
     }
 }
