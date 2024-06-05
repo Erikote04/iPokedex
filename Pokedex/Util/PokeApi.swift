@@ -16,22 +16,17 @@ class PokeApi {
     }
 }
 
-/// Returns a Pokemon from PokeAPI
-/// - Parameters:
-///    - pokemonURL: to pokemon
-/// Example
-/// ```
-/// getPokemon("https://pokeapi.co/api/v2/pokemon/80", completion: { pokemon in
-///     completion([ pokemon! ])
-/// })
-/// ```
 func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared) async -> Pokemon? {
-    guard let URL = URL(string: pokemonURL) else { return nil }
+    guard let url = URL(string: pokemonURL) else { return nil }
     
-    let (data, response) = try! await session.data(from: URL)
-    let pokemon = await parsePokemonJSON(data)
-    
-    return pokemon
+    do {
+        let (data, _) = try await session.data(from: url)
+        let pokemon = await parsePokemonJSON(data)
+        return pokemon
+    } catch {
+        print("Failed to fetch data: \(error.localizedDescription)")
+        return nil
+    }
 }
 
 func parsePokemonJSON(_ data: Data) async -> Pokemon? {
