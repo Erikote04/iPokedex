@@ -23,7 +23,7 @@ struct PokedexApp: App {
                 } else {
                     InitialLoadingView()
                         .task {
-                            let pokemons = await pokeAPI.getPokemons()
+                            let pokemons = await PokeApi.shared.getPokemons()
                             loaded = true
                         }
                         .environmentObject(capturedPokemonManager)

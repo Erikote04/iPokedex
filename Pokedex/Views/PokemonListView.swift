@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PokemonListView: View {
-    let pokemons: [Pokemon]!
+    @State var pokemons: [Pokemon]!
     @State private var searchText = ""
     
     var filteredPokemons: [Pokemon] {
@@ -36,6 +36,15 @@ struct PokemonListView: View {
                     }
                 }
             }
+            
+            Button("Load more...") {
+                Task {
+                    PokeApi.shared.currentPage = PokeApi.shared.currentPage.next()
+                    let newPokemons = await PokeApi.shared.getPokemons()
+                    pokemons.append(contentsOf: newPokemons)
+                }
+            }
+            .padding()
         }
     }
 }

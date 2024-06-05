@@ -13,7 +13,7 @@ public struct APIPage {
     }
     
     public func next() -> APIPage {
-        APIPage(start: start + pageSize, pageSize: pageSize)
+        APIPage(start: start + pageSize + 1, pageSize: pageSize)
     }
     
     public func previous() -> APIPage {

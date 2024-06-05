@@ -1,11 +1,14 @@
 import SwiftUI
 
 class PokeApi {
+    static let shared: PokeApi = PokeApi()
     let baseURL = "https://pokeapi.co/api/v2/pokemon/"
-    let currentPage = APIPage()
+    var currentPage = APIPage()
     var pokemons: [Pokemon] = []
     
     func getPokemons() async -> [Pokemon] {
+        self.pokemons = []
+        
         for id in currentPage.start...currentPage.stop {
             if let pokemon = await getPokemon("\(baseURL)\(id)") {
                 self.pokemons.append(pokemon)
@@ -20,9 +23,15 @@ func getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared) a
     guard let url = URL(string: pokemonURL) else { return nil }
     
     do {
-        let (data, _) = try await session.data(from: url)
-        let pokemon = await parsePokemonJSON(data)
-        return pokemon
+        let (data, response) = try await session.data(from: url)
+        if let HTTPResponse = response as? HTTPURLResponse,
+           HTTPResponse.statusCode == 404 {
+            print("Invalid ID: \(url)")
+            return nil
+        } else {
+            let pokemon = await parsePokemonJSON(data)
+            return pokemon
+        }
     } catch {
         print("Failed to fetch data: \(error.localizedDescription)")
         return nil
