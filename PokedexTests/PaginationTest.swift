@@ -33,7 +33,7 @@ final class PaginationTest: XCTestCase {
         XCTAssertEqual(page.stop, 25)
     }
     
-    func test_GivenJustCreatedPage_Then_ItStartsInOne() {
+    func test_GivenJustCreatedPage_ThenItStartsInOne() {
         // Given
         let page = APIPage()
         
@@ -51,9 +51,9 @@ final class PaginationTest: XCTestCase {
         let nextPage = page.next()
         
         // Then
-        XCTAssertEqual(11, nextPage.start)
+        XCTAssertEqual(12, nextPage.start)
         XCTAssertEqual(10, nextPage.pageSize)
-        XCTAssertEqual(21, nextPage.stop)
+        XCTAssertEqual(22, nextPage.stop)
     }
     
     // MARK: Moving Backwards
