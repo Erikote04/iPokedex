@@ -42,4 +42,3 @@ func parsePokemonJSON(_ data: Data) async -> Pokemon? {
     let pokemon = try? JSONDecoder().decode(Pokemon.self, from: data)
     return pokemon
 }
-

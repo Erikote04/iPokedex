@@ -1,6 +1,6 @@
 import Foundation
 
-let pokemon1JSON = """
+let pokemonStub = """
 {
   "abilities": [
     {
