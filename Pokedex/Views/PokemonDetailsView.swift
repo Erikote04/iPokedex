@@ -10,12 +10,24 @@ struct PokemonDetailsView: View {
             Text(pokemon.name.capitalized)
                 .font(.largeTitle)
             
+            HStack {
+                ForEach(pokemon.types) { type in
+                    Text(type.type.name)
+                }
+            }
+            
             pokemon.asyncImage()
             
             Spacer()
         }
         .padding()
         .background(pokemon.color)
+    }
+}
+
+extension Pokemon.PokemonType: Identifiable {
+    var id: String {
+        self.type.name
     }
 }
 

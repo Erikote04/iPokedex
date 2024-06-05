@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct Pokemon: Identifiable, Decodable, Hashable {
-    
     struct Sprite: Decodable, Hashable {
         struct Other: Decodable, Hashable {
             struct Artwork: Decodable, Hashable {
@@ -41,9 +40,9 @@ struct Pokemon: Identifiable, Decodable, Hashable {
     }
     
     enum Types: String {
-        case air
-        case bug
-        case dark
+        case air = "Air"
+        case bug = "Bug"
+        case dark = "Dark"
         case dragon
         case electric
         case fairy
