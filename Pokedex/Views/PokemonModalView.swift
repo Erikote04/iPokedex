@@ -59,6 +59,8 @@ struct PokemonModalView: View {
                 id: 35,
                 name: "clefairy",
                 weight: 75,
+                height: 2,
+                experience: 150,
                 sprites: Pokemon.Sprite(
                     other: Pokemon.Sprite.Other(
                         officialArtwork: Pokemon.Sprite.Other.Artwork(

@@ -27,6 +27,7 @@
 		BB884BD52C04DF8000C28109 /* PokemonGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB884BD42C04DF8000C28109 /* PokemonGridView.swift */; };
 		BB884BD72C04E04B00C28109 /* PokemonGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB884BD62C04E04B00C28109 /* PokemonGridItemView.swift */; };
 		BB884BD92C04E5CF00C28109 /* PokepediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB884BD82C04E5CF00C28109 /* PokepediaView.swift */; };
+		BB95DA732C11B7DE004F3C89 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB95DA722C11B7DE004F3C89 /* Formatter.swift */; };
 		BBC8BAFC2C07186C00C56B0A /* PokemonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8BAFB2C07186C00C56B0A /* PokemonModalView.swift */; };
 		BBDE6ACF2C10DD410035F790 /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE6ACE2C10DD410035F790 /* CustomDivider.swift */; };
 		BBDE6AD12C10DF7D0035F790 /* PokemonDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDE6AD02C10DF7D0035F790 /* PokemonDataView.swift */; };
@@ -73,6 +74,7 @@
 		BB884BD42C04DF8000C28109 /* PokemonGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGridView.swift; sourceTree = "<group>"; };
 		BB884BD62C04E04B00C28109 /* PokemonGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGridItemView.swift; sourceTree = "<group>"; };
 		BB884BD82C04E5CF00C28109 /* PokepediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokepediaView.swift; sourceTree = "<group>"; };
+		BB95DA722C11B7DE004F3C89 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		BBC8BAFB2C07186C00C56B0A /* PokemonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModalView.swift; sourceTree = "<group>"; };
 		BBDE6ACE2C10DD410035F790 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		BBDE6AD02C10DF7D0035F790 /* PokemonDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDataView.swift; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 		B13FE2B32BB81FFE00B6E1B2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				B19B4F172BC0B1C6005B989C /* APIPage.swift */,
 				B13FE2B42BB8207E00B6E1B2 /* PokeApi.swift */,
+				B19B4F172BC0B1C6005B989C /* APIPage.swift */,
+				BB95DA722C11B7DE004F3C89 /* Formatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				BB884BD72C04E04B00C28109 /* PokemonGridItemView.swift in Sources */,
 				B19B4F142BC0AA13005B989C /* PokemonTabView.swift in Sources */,
 				B13FE2B22BB7500300B6E1B2 /* Pokemon.swift in Sources */,
+				BB95DA732C11B7DE004F3C89 /* Formatter.swift in Sources */,
 				B141D6EB2BAB62870030B79F /* PokedexApp.swift in Sources */,
 				B13FE2BB2BB84BEB00B6E1B2 /* PokemonListCellView.swift in Sources */,
 				B19B4F162BC0AA6F005B989C /* InitialLoadingView.swift in Sources */,

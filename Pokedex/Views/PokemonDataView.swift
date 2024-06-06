@@ -22,9 +22,25 @@ struct PokemonDataView: View {
             CustomDivider(height: 1)
             
             HStack {
+                Text("Experience:")
+                Spacer()
+                Text("\(pokemon.experience)pts").bold()
+            }.padding(.horizontal)
+            
+            CustomDivider(height: 1)
+            
+            HStack {
                 Text("Weight:")
                 Spacer()
-                Text("\(pokemon.weight)kg").bold()
+                Text("\(format(pokemon.weight))kg").bold()
+            }.padding(.horizontal)
+            
+            CustomDivider(height: 1)
+            
+            HStack {
+                Text("Height:")
+                Spacer()
+                Text("\(format(pokemon.height))m").bold()
             }.padding(.horizontal)
             
             CustomDivider(height: 1)
@@ -39,6 +55,8 @@ struct PokemonDataView: View {
                 id: 35,
                 name: "clefairy",
                 weight: 75,
+                height: 2,
+                experience: 150,
                 sprites: Pokemon.Sprite(
                     other: Pokemon.Sprite.Other(
                         officialArtwork: Pokemon.Sprite.Other.Artwork(

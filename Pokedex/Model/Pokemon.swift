@@ -31,12 +31,24 @@ struct Pokemon: Identifiable, Decodable, Hashable {
     
     let id: Int
     let name: String
-    let weight: Int
+    let weight: Double
+    let height: Double
+    let experience: Int
     let sprites: Sprite
     let types: [PokemonType]
     
     var url: URL? {
         URL(string: sprites.other.officialArtwork.frontDefault)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case weight
+        case height
+        case experience = "base_experience"
+        case sprites
+        case types
     }
     
     enum Types: String {
