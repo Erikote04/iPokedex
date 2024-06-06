@@ -39,8 +39,8 @@ struct PokemonListView: View {
             
             Button("Load more...") {
                 Task {
-                    PokeApi.shared.currentPage = PokeApi.shared.currentPage.next()
-                    let newPokemons = await PokeApi.shared.getPokemons()
+                    PokeAPI.shared.currentPage = PokeAPI.shared.currentPage.next()
+                    let newPokemons = await PokeAPI.shared.getPokemons()
                     pokemons.append(contentsOf: newPokemons)
                 }
             }

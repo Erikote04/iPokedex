@@ -25,7 +25,7 @@ struct PokemonTabView: View {
         }
         .font(.headline)
         .task {
-            let pokemons = await PokeApi().getPokemons()
+            let pokemons = await PokeAPI().getPokemons()
             self.pokemons = pokemons.sorted { $0.id < $1.id }
         }
     }

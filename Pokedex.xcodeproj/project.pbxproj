@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B13FE2B22BB7500300B6E1B2 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2B12BB7500300B6E1B2 /* Pokemon.swift */; };
-		B13FE2B52BB8207E00B6E1B2 /* PokeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2B42BB8207E00B6E1B2 /* PokeApi.swift */; };
+		B13FE2B52BB8207E00B6E1B2 /* PokeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2B42BB8207E00B6E1B2 /* PokeAPI.swift */; };
 		B13FE2B72BB824F800B6E1B2 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2B62BB824F800B6E1B2 /* PokemonListView.swift */; };
 		B13FE2B92BB83DB900B6E1B2 /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2B82BB83DB900B6E1B2 /* PokemonDetailsView.swift */; };
 		B13FE2BB2BB84BEB00B6E1B2 /* PokemonListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13FE2BA2BB84BEB00B6E1B2 /* PokemonListCellView.swift */; };
@@ -52,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		B13FE2B12BB7500300B6E1B2 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
-		B13FE2B42BB8207E00B6E1B2 /* PokeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApi.swift; sourceTree = "<group>"; };
+		B13FE2B42BB8207E00B6E1B2 /* PokeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeAPI.swift; sourceTree = "<group>"; };
 		B13FE2B62BB824F800B6E1B2 /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		B13FE2B82BB83DB900B6E1B2 /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
 		B13FE2BA2BB84BEB00B6E1B2 /* PokemonListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListCellView.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		B13FE2B32BB81FFE00B6E1B2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				B13FE2B42BB8207E00B6E1B2 /* PokeApi.swift */,
+				B13FE2B42BB8207E00B6E1B2 /* PokeAPI.swift */,
 				B19B4F172BC0B1C6005B989C /* APIPage.swift */,
 				BB95DA722C11B7DE004F3C89 /* Formatter.swift */,
 			);
@@ -348,7 +348,7 @@
 				B141D6EB2BAB62870030B79F /* PokedexApp.swift in Sources */,
 				B13FE2BB2BB84BEB00B6E1B2 /* PokemonListCellView.swift in Sources */,
 				B19B4F162BC0AA6F005B989C /* InitialLoadingView.swift in Sources */,
-				B13FE2B52BB8207E00B6E1B2 /* PokeApi.swift in Sources */,
+				B13FE2B52BB8207E00B6E1B2 /* PokeAPI.swift in Sources */,
 				B13FE2B72BB824F800B6E1B2 /* PokemonListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,13 +517,15 @@
 				DEVELOPMENT_TEAM = 9PY53WPJ8K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,13 +550,15 @@
 				DEVELOPMENT_TEAM = 9PY53WPJ8K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Show the user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

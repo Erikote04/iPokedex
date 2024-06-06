@@ -1,7 +1,7 @@
 import SwiftUI
 
-class PokeApi {
-    static let shared: PokeApi = PokeApi()
+class PokeAPI {
+    static let shared: PokeAPI = PokeAPI()
     let baseURL = "https://pokeapi.co/api/v2/pokemon/"
     var currentPage = APIPage()
     var pokemons: [Pokemon] = []

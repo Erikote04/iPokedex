@@ -32,6 +32,7 @@ struct PokemonMapView: View {
     @State var pokemons: [Pokemon]!
     @State var selectedPokemon: Pokemon? = nil
     @State private var isShowingModal = false
+    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708),
         latitudinalMeters: 5000.0,
@@ -40,19 +41,29 @@ struct PokemonMapView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $region, annotationItems: pokemons) { item in
-                MapAnnotation(coordinate: item.location) {
-                    item
-                        .asyncImage()
-                        .frame(width: 40.0, height: 40.0)
-                        .onTapGesture {
-                            selectedPokemon = item
-                        }
+            Map(position: $position) {
+                UserAnnotation()
+                ForEach(pokemons) {pokemon in
+                    Annotation("", coordinate: pokemon.location) {
+                        pokemon
+                            .asyncImage()
+                            .frame(width: 40.0, height: 40.0)
+                            .onTapGesture {
+                                selectedPokemon = pokemon
+                            }
+                    }
                 }
+            }
+            .mapControls {
+                MapUserLocationButton()
+                MapPitchToggle()
             }
         }
         .sheet(item: $selectedPokemon) { pokemon in
             PokemonModalView(pokemon: pokemon)
+        }
+        .onAppear {
+            CLLocationManager().requestWhenInUseAuthorization()
         }
     }
 }

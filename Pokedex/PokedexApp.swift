@@ -9,7 +9,7 @@ struct PokedexApp: App {
     
     @State var pokemons: [Pokemon]?
     @State var loaded = false
-    let pokeAPI = PokeApi()
+    let pokeAPI = PokeAPI()
     let capturedPokemonManager = CapturedPokemonManager()
     
     var body: some Scene {
@@ -23,7 +23,7 @@ struct PokedexApp: App {
                 } else {
                     InitialLoadingView()
                         .task {
-                            let pokemons = await PokeApi.shared.getPokemons()
+                            let pokemons = await PokeAPI.shared.getPokemons()
                             loaded = true
                         }
                         .environmentObject(capturedPokemonManager)
