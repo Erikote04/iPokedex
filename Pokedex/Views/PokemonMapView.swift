@@ -3,8 +3,11 @@ import MapKit
 
 extension Pokemon {
     var location: CLLocationCoordinate2D {
-        let lat = Double.random(in: 40.75773...40.8)
-        let lon = Double.random(in: (-74.0)...(-73.985708))
+        let locationManager = CLLocationManager()
+        let userLocation = locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708)
+        
+        let lat = userLocation.latitude + Double.random(in: -0.01...0.01)
+        let lon = userLocation.longitude + Double.random(in: -0.01...0.01)
         
         return CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }

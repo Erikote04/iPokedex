@@ -7,7 +7,7 @@ public struct APIPage {
         start + pageSize
     }
     
-    public init(start: Int = 1, pageSize: Int = 10) {
+    public init(start: Int = 1, pageSize: Int = 20) {
         self.start = start
         self.pageSize = pageSize
     }
