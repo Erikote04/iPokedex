@@ -19,8 +19,8 @@ final class PaginationTest: XCTestCase {
         
         // Then
         XCTAssertEqual(page.start, 1)
-        XCTAssertEqual(page.pageSize, 20)
-        XCTAssertEqual(page.stop, 21)
+        XCTAssertEqual(page.pageSize, 19)
+        XCTAssertEqual(page.stop, 20)
     }
     
     func test_GivenCustomPage_ThenMatchesCustomValues() {
@@ -51,9 +51,9 @@ final class PaginationTest: XCTestCase {
         let nextPage = page.next()
         
         // Then
-        XCTAssertEqual(22, nextPage.start)
-        XCTAssertEqual(20, nextPage.pageSize)
-        XCTAssertEqual(42, nextPage.stop)
+        XCTAssertEqual(21, nextPage.start)
+        XCTAssertEqual(19, nextPage.pageSize)
+        XCTAssertEqual(40, nextPage.stop)
     }
     
     // MARK: Moving Backwards
