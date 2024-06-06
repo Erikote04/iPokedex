@@ -6,18 +6,20 @@ struct PokemonDetailsView: View {
     var body: some View {
         VStack {
             Spacer()
-            
-            Text(pokemon.name.capitalized)
-                .font(.largeTitle)
-            
-            pokemon.asyncImage()
-            
-            PokemonDataView(pokemon: pokemon)
-            
-            Spacer()
+            VStack {
+                Text(pokemon.name.capitalized)
+                    .font(.largeTitle)
+                
+                pokemon.asyncImage()
+                
+                PokemonDataView(pokemon: pokemon)
+            }
+            .padding()
         }
-        .padding()
+        .navigationTitle(pokemon.name.capitalized)
+        .navigationBarTitleDisplayMode(.inline)
         .background(pokemon.color)
+        .padding(.vertical)
     }
 }
 
@@ -48,11 +50,13 @@ struct PokemonDetailsView: View {
             )
     )
     
-    return TabView {
-        pokemonDetailView
-            .tabItem {
-                Image(systemName: "star.fill")
-                Text("Pokedex")
-            }
+    return NavigationStack {
+        TabView {
+            pokemonDetailView
+                .tabItem {
+                    Image(systemName: "star.fill")
+                    Text("Pokedex")
+                }
+        }.navigationTitle(.constant("Pokemon")).navigationBarTitleDisplayMode(.inline)
     }
 }
