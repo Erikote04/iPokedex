@@ -45,17 +45,17 @@ Retrieves an array of `n` (20 by default) `Pokemons`.
 ## Screen
 
 <p float="left">
-  <img src="Screenshots/LoadingView.png" alt="Pokedex View" width="300">
+  <img src="Screenshots/LoadingView.png" alt="Pokedex View" width="200">
 
-  <img src="Screenshots/PokedexView.png" alt="Pokedex View" width="300">
+  <img src="Screenshots/PokedexView.png" alt="Pokedex View" width="200">
 
-  <img src="Screenshots/PokepediaGridView.png" alt="Pokepedia Grid Layout View" width="300">
+  <img src="Screenshots/PokepediaGridView.png" alt="Pokepedia Grid Layout View" width="200">
 
-  <img src="Screenshots/PokepediaListView.png" alt="Pokepedia List View" width="300">
+  <img src="Screenshots/PokepediaListView.png" alt="Pokepedia List View" width="200">
 
-  <img src="Screenshots/PokemonMapView.png" alt="Map View" width="300">
+  <img src="Screenshots/PokemonMapView.png" alt="Map View" width="200">
 
-  <img src="Screenshots/PokemonModalView.png" alt="Capture Pokemon View" width="300">
+  <img src="Screenshots/PokemonModalView.png" alt="Capture Pokemon View" width="200">
 </p>
 
 ## Running Tests
