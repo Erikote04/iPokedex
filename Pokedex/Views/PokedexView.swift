@@ -33,8 +33,3 @@ struct PokedexView: View {
         }
     }
 }
-
-#Preview {
-    PokedexView()
-        .environmentObject(CapturedPokemonManager())
-}

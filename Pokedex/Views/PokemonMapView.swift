@@ -70,7 +70,3 @@ struct PokemonMapView: View {
         }
     }
 }
-
-#Preview {
-    PokemonMapView()
-}

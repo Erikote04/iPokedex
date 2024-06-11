@@ -9,7 +9,3 @@ struct CustomDivider: View {
             .padding(.horizontal)
     }
 }
-
-#Preview {
-    CustomDivider(height: 1)
-}

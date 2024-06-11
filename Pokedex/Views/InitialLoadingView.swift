@@ -24,7 +24,3 @@ struct InitialLoadingView: View {
         .ignoresSafeArea()
     }
 }
-
-#Preview {
-    InitialLoadingView()
-}

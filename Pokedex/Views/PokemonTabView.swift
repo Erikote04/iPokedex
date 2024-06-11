@@ -30,8 +30,3 @@ struct PokemonTabView: View {
         }
     }
 }
-
-#Preview {
-    PokemonTabView(pokemons: [])
-        .environmentObject(CapturedPokemonManager())
-}

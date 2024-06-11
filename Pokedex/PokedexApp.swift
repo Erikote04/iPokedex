@@ -9,7 +9,6 @@ struct PokedexApp: App {
     
     @State var pokemons: [Pokemon]?
     @State var loaded = false
-    let pokeAPI = PokeAPI()
     let capturedPokemonManager = CapturedPokemonManager()
     
     var body: some Scene {
