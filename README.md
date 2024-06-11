@@ -2,6 +2,11 @@
 
 iPokedex is the application I have developed for my Final Degree Project. It uses the PokeAPI to show pokemons in different screens and and allows the user to "interact" with them.
 
+## Requirements
+
+- Mac device that supports Xcode 15
+- Version iOS 17 on Xcode project
+
 ## PokeAPI
 
 #### Get one itemm
@@ -14,11 +19,10 @@ iPokedex is the application I have developed for my Final Degree Project. It use
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `Int`    | Id of the pokemon                 |
 | `name`    | `String` | Name of the pokemon               |
-|
 
 #### `func parsePokemonJSON(_ data: Data) async -> Pokemon?`
 
-Decodes `JSON` data into a `Pokemon` object. Returns `nil` id any errors arise.
+Decodes `JSON` data into a `Pokemon` object. Returns `nil` if any errors arise.
 
 #### `getPokemon(_ pokemonURL: String, session: URLSession = URLSession.shared) async -> Pokemon?`
 
